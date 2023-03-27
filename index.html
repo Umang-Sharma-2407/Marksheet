@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet using DOM and Table tag</title>
+    <script>
+        function check(){
+            let name = document.getElementById("n").value;
+            let fname = document.getElementById("fn").value;
+            let clas = document.getElementById("class").value;
+            let roll = document.getElementById("roll").value;
+            let math = document.getElementById("math").value;
+            let phy = document.getElementById("phy").value;
+            let hindi = document.getElementById("hindi").value;
+            let computer = document.getElementById("com").value;
+
+            document.getElementById("dis1").innerHTML = "Name : " + name + "<br>";
+            document.getElementById("dis2").innerHTML = "Father's Name : " + fname + "<br>";
+            document.getElementById("dis3").innerHTML = "Class : " + clas + "<br>";
+            document.getElementById("dis4").innerHTML = "Roll No : " + roll + "<br>";
+
+            let obtMarks = parseInt(math) + parseInt(phy) + parseInt(hindi) + parseInt(computer);
+            document.getElementById("dis5").innerHTML = "Your Obtained Marks : " + obtMarks + "<br>";
+            let percent = (obtMarks / 400) * 100;
+            document.getElementById("dis6").innerHTML = "Your Percentage : " + percent + "% <br>";
+
+            if(percent >= 90){
+                document.getElementById("dis7").innerHTML = "Grade : O";
+                document.getElementById("dis8").innerHTML = "Remarks : Excellent !!";
+            }
+            else if(percent >= 80){
+                document.getElementById("dis7").innerHTML = "Grade : A";
+                document.getElementById("dis8").innerHTML = "Remarks : Very Good !!";
+            }
+            else if(percent >= 70){
+                document.getElementById("dis7").innerHTML = "Grade : B";
+                document.getElementById("dis8").innerHTML = "Remarks : Good !!";
+            }
+            else if(percent >= 60){
+                document.getElementById("dis7").innerHTML = "Grade : C";
+                document.getElementById("dis8").innerHTML = "Remarks : Need Improvement !!";
+            }
+            else if(percent >= 50){
+                document.getElementById("dis7").innerHTML = "Grade : D";
+                document.getElementById("dis8").innerHTML = "Remarks : Poor !!";
+            }
+            else if(percent >= 33){
+                document.getElementById("dis7").innerHTML = "Grade : E";
+                document.getElementById("dis8").innerHTML = "Remarks : Need More Hardwork !!";
+            }
+            else{
+                document.getElementById("dis7").innerHTML = "Grade : F";
+                document.getElementById("dis8").innerHTML = "Remarks : Failed !!";
+            }
+
+            let supply = 0;
+
+            if(math < 33){
+                supply++;
+                document.getElementById("dis10").innerHTML = " You are failed in Maths <br>";
+            }
+            if(phy < 33){
+                supply++;
+                document.getElementById("dis10").innerHTML += " You are failed in Physics <br>";
+            }
+            if(hindi < 33){
+                supply++;
+                document.getElementById("dis10").innerHTML += " You are failed in Hindi <br>";
+            }
+            if(computer < 33){
+                supply++;
+                document.getElementById("dis10").innerHTML += " You are failed in Computer <br>";
+            }
+            if(supply == 0){
+                document.getElementById("dis9").innerHTML = "Failed in " + supply + " subject <br>";
+                document.getElementById("dis9").style.color = "green";
+            }
+            else{
+                document.getElementById("dis9").innerHTML = "Failed in " + supply + " subject <br>";
+                document.getElementById("dis9").style.color = "red";
+            }
+
+        }
+    </script>
+</head>
+<body style="background-color:rgb(150, 192, 202);">
+    <center>
+    <table style="background-color: rgb(175, 178, 176);" border="3" height="400" width="350">
+        <form>
+            <tr>
+                <th colspan="2">MARKSHEET</th>
+            </tr>
+            <tr>
+                <td><label>Name : </label></td>
+                <td><input type="text" id="n" placeholder="Enter your name"></td>
+            </tr>
+            <tr>
+                <td><label>Father's Name : </label></td>
+                <td><input type="text" id="fn" placeholder="Enter your Father's name"></td>
+            </tr>
+            <tr>
+                <td><label>Class : </label></td>
+                <td><input type="text" id="class" placeholder="Enter your class"></td>
+            </tr>
+            <tr>
+                <td><label>Roll No : </label></td>
+                <td><input type="text" id="roll" placeholder="Enter your Roll No"></td>
+            </tr>
+            <tr>
+                <td><label>Math Marks : </label></td>
+                <td><input type="text" id="math" placeholder="Enter your Math Marks"></td>
+            </tr>
+            <tr>
+                <td><label>Physics Marks : </label></td>
+                <td><input type="text" id="phy" placeholder="Enter your Physics Marks"></td>
+            </tr>
+            <tr>
+                <td><label>Hindi Marks : </label></td>
+                <td><input type="text" id="hindi" placeholder="Enter your Hindi Marks"></td>
+            </tr>
+            <tr>
+                <td><label>Computer Marks : </label></td>
+                <td><input type="text" id="com" placeholder="Enter your Computer Marks"></td>
+            </tr>
+            <tr>
+                <td style="text-align: center;" colspan="2"><input type="button" value="Submit" id="submit" onclick="check()"></td>
+            </tr>
+        </form>
+    </table>
+
+
+    <h2 id="dis1"></h2>
+    <h2 id="dis2"></h2>
+    <h2 id="dis3"></h2>
+    <h2 id="dis4"></h2>
+    <h2 id="dis5"></h2>
+    <h2 id="dis6"></h2>
+    <h2 id="dis7"></h2>
+    <h2 id="dis8"></h2>
+    <h2 id="dis9"></h2>
+    <h2 id="dis10"></h2>
+
+</center>
+    
+</body>
+</html>
